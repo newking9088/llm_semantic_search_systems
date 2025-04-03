@@ -1,3 +1,5 @@
+<a href="https://www.rksmusings.com/2023/10/29/quick-start-guide-to-large-language-models/" target="_blank">Quick LLM Guide</a>
+
 <img src="nlp_evolution.png" alt="Evolution of NLP models" width="150%" />
 
 ## Q.1. What are Language Models?
@@ -29,6 +31,8 @@ Models with roughly 100 million parameters or more are typically considered LLMs
 * **BERT variants** (Google)
 * **T5 models** (Google)
 
+  <img src="llms_params.png" alt="LLM Parameters" width="150%" />
+
 ## Performance Characteristics
 * **Autoregressive models** (like GPT): Slower processing but powerful text generation capabilities
 * **Autoencoding models** (like BERT): Faster at encoding semantic meaning but limited generation abilities
@@ -53,6 +57,8 @@ Many LLMs are available as APIs, such as OpenAI's GPT models, which can be acces
 Semantic search is a system that understands the meaning and context of a search query and matches it against the meaning and context of available documents for retrieval. Unlike traditional keyword-based search, semantic search can find relevant results without having to rely on exact keyword or n-gram matching, often using a pre-trained large language model (LLM) to understand the nuances of the query and the documents.
 
 <img src="semantic_search.png" alt="Semantic Search Workflow" width="100%" />
+
+<img src="semantic_search_system_pinecone.png" alt="Semantic Search using PineCone and OpenAI Embeddings" width="150%" />
 
 The core process involves encoding or embedding both search queries and documents into vectors using the same embedding method through language models. The semantic search engine then finds the closest matches by measuring distances between these vectors using metrics like:
 
