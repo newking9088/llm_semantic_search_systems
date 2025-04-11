@@ -192,7 +192,9 @@ The three main parameters you can tune in OpenAI's GPT playground are:
 
 Another interesting way to prompt our LLM is few-shot learning/In-context learning. In this we give an LLM an example of task being solved to teach the LLM how to reason through a problem and also to format the answer in desired format.
 
-GPT-3 papers' title called out few-shot learning as a primary source of in-context learning - on the job training for an LLM. (Language Models are Few Shot Learners)
+GPT-3 papers' title called out few-shot learning as a primary source of in-context learning - on the job training for an LLM. 
+
+Reference: <a href="https://arxiv.org/abs/2005.14165" target="_blank">Language Models are Few Shot Learners</a>
 
 ### Example: Movie Review Classification
 ```
