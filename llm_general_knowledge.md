@@ -160,3 +160,48 @@ The attention mechanism helps the model correctly associate words with their ref
 - **Decoder-only transformer**: Used for text generation (like ChatGPT)
 - **Encoder-Decoder transformer**: Used for translation tasks
 
+## Q.4. What is Prompt Engineering?
+
+Prompt engineering is the process of carefully designing inputs for massively large language models such as GPT-3 and ChatGPT to guide them to produce relevant and coherent outputs. Many AI researchers consider prompt engineering a "bug" in AI and that it will go away in the next few years.
+
+Remember attention and how LLMs predict? They predict one token/word at a time. That means that order matters - put your instruct FIRST and context SECOND so that when the LLM reads the context, it has already read the instruction and is thinking about the task the whole time. 
+
+The three main parameters you can tune in OpenAI's GPT playground are:
+
+1. **Temperature** (0-2): Controls randomness in token selection
+   - **Formula**: $P(\text{token}_i) = \frac{\exp(\text{logit}_i / T)}{\sum_j \exp(\text{logit}_j / T)}$
+   - **Low values** (0-0.3): More deterministic, consistent outputs
+   - **High values** (0.7-2.0): More creative, diverse, potentially surprising outputs
+   - **Default**: 1.0 (standard probability distribution)
+
+2. **Maximum Token Length** (1-4096+): Limits response size
+   - Controls how many tokens (roughly 4 characters or ¾ of a word) the model will generate
+   - Higher values allow for longer responses but consume more resources
+   - Models have different maximum context limits (e.g., GPT-4 supports 8K-32K tokens)
+
+3. **Top-p** (0-1): Controls token diversity via nucleus sampling
+   - Only considers tokens whose cumulative probability exceeds the specified value
+   - **Lower values** (e.g., 0.5): More focused on highly probable tokens
+   - **Higher values** (e.g., 0.9): Considers a wider range of possible tokens
+   - **Value of 1.0**: Considers all possible next tokens (no filtering)
+  
+
+<img src="gpt4o_prompts.png" alt="GPT-4o prompts" width="100%" />
+
+## Few-Shot Learning/In-Context Learning
+
+Another interesting way to prompt our LLM is few-shot learning/In-context learning. In this we give an LLM an example of task being solved to teach the LLM how to reason through a problem and also to format the answer in desired format.
+
+GPT-3 papers' title called out few-shot learning as a primary source of in-context learning - on the job training for an LLM. (Language Models are Few Shot Learners)
+
+### Example: Movie Review Classification
+```
+Classify the following movie reviews as positive or negative:
+Review: "This film was absolutely brilliant! The acting was superb."
+Classification: Positive
+Review: "Terrible plot, wooden acting, and poor direction."
+Classification: Negative
+Review: "I couldn't stop checking my watch. Complete waste of time."
+Classification:
+```
+Few shot prompting can become cumbersome if we are doing a classification task with 1000s of labels, as we'd need examples of those for the model to learn via few-shot.
