@@ -107,6 +107,7 @@ Since embedding models have fixed token windows, chunking is used to turn larger
 4. **Sliding Window Chunking**: Creating overlapping chunks to maintain context between adjacent text segments
 5. **Recursive Chunking**: Creating hierarchical representations of documents
 
+<img src="semantic_search_with_ce.png" alt="Evolution of NLP models" width="150%"/>
 
 ## Q.3. What are Transformers?
 Transformers are neural network architectures introduced in the paper <a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention is All You Need (2017)</a>
