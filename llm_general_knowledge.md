@@ -208,3 +208,70 @@ Review: "I couldn't stop checking my watch. Complete waste of time."
 Classification:
 ```
 Few shot prompting can become cumbersome if we are doing a classification task with 1000s of labels, as we'd need examples of those for the model to learn via few-shot.
+
+## Q.5. What is RAG?
+
+RAG stands for Retrieval-Augmented Generation. It's an approach that enhances large language models by retrieving relevant information from external sources before generating responses.
+
+A RAG system typically consists of three main components:
+
+1. **Indexer**: Converts raw text data into vector embeddings and stores them in a database
+2. **Retriever**: Fetches the most relevant information from the database based on the user's query
+3. **Generator**: An LLM (like GPT-4) that uses both the user's query and the retrieved information to create a coherent, informed response
+
+<img src="RAG.png" alt="RAG Architecture" width="100%" />
+
+## RAG Prompt Template
+
+Good prompting techniques improve RAG system performance by providing clearer instructions to the LLM about how to use retrieved information. As shown in the examples, a well-structured prompt helps the model determine when information is sufficient and how to respond appropriately.
+
+Effective prompting essentially teaches the model the right decision-making process for incorporating retrieved information, which leads to more accurate, helpful, and trustworthy responses.
+```
+[START]
+User Input: Who is the Gabonese president?
+Context: Ali Bongo Ondimba (born Alain Bernard Bongo; 9 February 1959), sometimes known as Ali Bongo, is a Gabonese politician who has been President of Gabon since October 2009.
+Context Score: 0.653874516
+Assistant Thought: This context has sufficient information to answer the question.
+Assistant Response: The Gabonese president is Ali Bongo Ondimba, who has been in office since October 2009.
+[END]
+[START]
+User Input: How old is Obama
+Context: Ali Bongo Ondimba (born Alain Bernard Bongo; 9 February 1959), sometimes known as Ali Bongo, is a Gabonese politician who has been President of Gabon since October 2009.
+Context Score: 0.275272697
+Assistant Thought: This context does not have sufficient information to answer the question.
+Assistant Response: I don't have sufficient information to answer how old Obama is based on the provided context.
+[END]
+```
+
+## Evaluating RAG Systems
+
+### Evaluating the Retriever
+
+When evaluating a RAG retriever, metrics like precision and recall are commonly used:
+
+- **Precision** = # of relevant documents / # of documents retrieved
+- **Recall** = # of relevant documents retrieved / # of all relevant documents
+
+The choice between precision and recall depends on your task:
+- If multiple relevant documents exist, precision might be a better metric
+- If you typically have one relevant document at a time, recall might be more appropriate
+
+### Evaluating the Generator
+
+For the generator component, the evaluation focuses on:
+- Whether it correctly admits when it cannot answer a question due to insufficient context
+- If it answers inline with the provided context
+- Whether it provides factual information
+
+This generally involves creating a rubric with questions like:
+- Did the AI answer the question?
+- Was the response conversational and natural?
+- Did it provide a source?
+- Was the information accurate and factual?
+
+The evaluator can be human or another AI system following the rubric.
+
+### Evaluating Indexing
+
+We can also evaluate a RAG's indexing capability by checking whether two pieces of text that should be similar are embedded close to each other. If not, fine-tuning the embedding model might be necessary.
+
