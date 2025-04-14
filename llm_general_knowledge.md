@@ -219,7 +219,7 @@ A RAG system typically consists of three main components:
 2. **Retriever**: Fetches the most relevant information from the database based on the user's query
 3. **Generator**: An LLM (like GPT-4) that uses both the user's query and the retrieved information to create a coherent, informed response
 
-<img src="RAG.png" alt="RAG Architecture" width="100%" />
+<img src="rag.png" alt="RAG Architecture" width="100%" />
 
 ## RAG Prompt Template
 
