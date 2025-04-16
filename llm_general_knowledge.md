@@ -275,3 +275,49 @@ The evaluator can be human or another AI system following the rubric.
 
 We can also evaluate a RAG's indexing capability by checking whether two pieces of text that should be similar are embedded close to each other. If not, fine-tuning the embedding model might be necessary.
 
+## Q.6. What are AI Agents and Workflows?
+[Agents and Workflows Reading](https://langchain-ai.github.io/langgraph/tutorials/workflows/#agent)
+
+## AI Agents
+
+An AI agent is a type of artificial intelligence system that can perceive its environment, make decisions, and take actions to achieve specific goals. The key characteristic that distinguishes AI agents from more basic AI systems is their ability to use tools, perform actions based on those tools, observe the results, and respond accordingly.
+
+AI agents follow a "thought, action, observation, and response" pattern, where they:
+1. Process information and decide what to do
+2. Take an action using available tools
+3. Observe the results of that action
+4. Respond based on those observations
+
+Agents are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks. They're best suited for open-ended problems where it's difficult to predict the required number of steps and where you can't hardcode a fixed path.
+
+<img src="ai_agents_workflow.png" alt="AI Agents and Workflows" width="100%" />
+
+## Workflows
+
+Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Unlike agents, workflows follow fixed patterns designed by developers rather than allowing the AI to dynamically determine its own process.
+
+The document identifies several types of workflows:
+
+1. **Prompt Chaining**: Decomposes tasks into sequential steps, with each LLM call processing the output of the previous one.
+
+2. **Parallelization**: LLMs work simultaneously on tasks, either by breaking them into independent subtasks or running the same task multiple times.
+
+3. **Routing**: Classifies inputs and directs them to specialized followup tasks.
+
+4. **Orchestrator-Worker**: A central LLM dynamically breaks down tasks, delegates to worker LLMs, and synthesizes results.
+
+5. **Evaluator-Optimizer**: One LLM generates a response while another provides evaluation and feedback in a loop.
+
+## Combining Agents and Workflows
+
+AI agents and workflows can be combined to create powerful systems that leverage the strengths of both approaches. For example, in a comprehensive travel planning system:
+
+- A master AI agent could serve as the coordinator, understanding customer preferences through conversation
+- Specialized workflows could handle predictable processes like:
+  - Destination research using parallelization to evaluate multiple options simultaneously
+  - Itinerary planning with orchestrator-worker patterns to plan daily activities
+  - Booking processes using tools to interact with hotel, flight, and attraction APIs
+  - Documentation generation through prompt chaining
+
+This combination provides both flexibility for handling unpredictable customer requests (through agents) and reliability in standardized processes like booking and documentation (through workflows), creating a system that delivers personalized experiences while maintaining efficiency for complex logistics.
+
